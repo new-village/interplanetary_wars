@@ -1,0 +1,6 @@
+flutter:
+  web:
+    renderer: html
+    build:
+      target: web
+      output: build/web

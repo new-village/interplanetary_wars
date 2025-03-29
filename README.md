@@ -64,3 +64,67 @@ This project is intended to be built for the web and deployed on GitHub Pages.
 ## ✍️ Prompt for Copilot Workspace
 
 > Build a turn-based Flutter web game called "Interplanetary Wars" where a player and an enemy take turns attacking each other. Each side starts with 100 HP. Attacks do random damage, and the first to reduce the opponent to 0 wins. Include a combat log, buttons for player actions, and turn indicator. Enemy automatically attacks each turn.
+
+## 📦 CI/CD Pipeline for GitHub Pages Deployment
+
+This project includes a CI/CD pipeline to automatically deploy the Flutter web app to GitHub Pages using GitHub Actions.
+
+### Setting Up the CI/CD Pipeline
+
+1. **Create a `gh-pages` branch**:
+   ```sh
+   git checkout --orphan gh-pages
+   git reset --hard
+   git commit --allow-empty -m "Initialize gh-pages branch"
+   git push origin gh-pages
+   git checkout main
+   ```
+
+2. **Add the GitHub Actions workflow file**:
+   The workflow file is located at `/.github/workflows/deploy.yml`. It defines the CI/CD pipeline for deploying the Flutter app to GitHub Pages.
+
+3. **Add the deployment script**:
+   The deployment script is located at `/scripts/deploy.sh`. It builds the Flutter web app and pushes the build output to the `gh-pages` branch.
+
+4. **Configure Flutter web build settings**:
+   The configuration file is located at `/flutter_web_build.yaml`. It contains settings for the Flutter web build, such as the target platform and build directory.
+
+### Manually Deploying the Flutter App to GitHub Pages
+
+If you need to manually deploy the Flutter app to GitHub Pages, follow these steps:
+
+1. **Build the Flutter web app**:
+   ```sh
+   flutter build web
+   ```
+
+2. **Navigate to the build output directory**:
+   ```sh
+   cd build/web
+   ```
+
+3. **Initialize a new Git repository**:
+   ```sh
+   git init
+   ```
+
+4. **Configure Git user**:
+   ```sh
+   git config user.name "your-username"
+   git config user.email "your-email@example.com"
+   ```
+
+5. **Add all files to the new repository**:
+   ```sh
+   git add .
+   ```
+
+6. **Commit the changes**:
+   ```sh
+   git commit -m "Deploy to GitHub Pages"
+   ```
+
+7. **Force push to the `gh-pages` branch**:
+   ```sh
+   git push --force "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" master:gh-pages
+   ```

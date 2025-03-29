@@ -1,0 +1,22 @@
+{
+  "name": "Flutter Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dart-code.flutter",
+        "dart-code.dart",
+        "github.copilot",
+        "robert-brunhage.flutter-riverpod-snippets",
+        "coenraads.bracket-pair-colorizer-2",
+        "usernamehw.errorlens",
+        "humao.rest-client",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "postCreateCommand": "flutter doctor && flutter pub get",
+  "remoteUser": "vscode"
+}

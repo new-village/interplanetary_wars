@@ -18,6 +18,14 @@ jobs:
         with:
           flutter-version: '2.5.3'
 
+      - name: Debug paths and run flutter pub get
+        run: |
+          echo "Current working directory: $(pwd)"
+          echo "Listing files in current directory:"
+          ls -la
+          echo "Searching for pubspec.yaml:"
+          find . -name pubspec.yaml
+
       - name: Install dependencies
         run: flutter pub get
 
